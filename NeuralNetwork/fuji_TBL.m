@@ -9,7 +9,7 @@ dE_Hnet(3)=zeros;
 Onet =zeros;
 Learn_Rate = 4.0;
 
-for N = 1:10000
+for N = 1:2000
     for i = 1:4
         %forward pp
         I = data_in(:,i);
