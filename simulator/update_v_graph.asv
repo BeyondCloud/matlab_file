@@ -1,0 +1,17 @@
+function update_v_graph(inp)
+% sinchronize line in main GUI to line in velocity GUI
+% end other
+handles=inp{1}; 
+ghandles=inp{2}; 
+
+% handle to line in main GUI
+hpv=handles% handle to line in velocity GUI
+
+XData=get(hpv,'XData');
+YData=get(hpv,'YData');
+
+set(hp,'XData',XData);
+set(hp,'YData',YData);
+
+
+

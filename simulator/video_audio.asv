@@ -1,0 +1,32 @@
+function video_audio(handles)
+
+L=str2double(get(handles.L,'string'));
+Fs=str2double(get(handles.Fs,'string'));
+n=str2double(get(handles.n,'string'));
+dt=1/Fs;
+x=linspace(0,L,n);
+
+y=get(handles.calculate,'UserData');
+
+fsp=str2double(get(handles.sps,'string'));
+sc=round((1/fsp)/(1/Fs)); % sound samples per frame = block size
+
+mic1p=get(handles.slider1,'Value');
+mic1pL=mic1p*L;
+[tmp mic1i]=min(abs(handles.ic.xLine-mic1pL));
+
+mic2p=get(handles.slider2,'Value');
+mic2pL=mic2p*L;
+[tmp mic2i]=min(abs(handles.ic.xLine-mic2pL));
+
+Fs=str2double(get(handles.Fs,'string'));
+
+y=get(handles.calculate,'UserData');
+
+y1=[y(:,mic1i) y(:,mic2i)];
+
+
+
+nblocks=4;
+margin=nblocks-1;
+

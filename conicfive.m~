@@ -1,0 +1,45 @@
+function conicfive
+clc;
+clear;
+if ~isempty(gcbo)
+    while get(gcf,'userdata')
+        %update click point
+        set(gcbo,'markerfacecolor','g') 
+        p=get(0,'PointerLocation');%return mouse pos (ref botton left)
+        pf=get(gcf,'pos');%[x y w h] (ref botton left)
+        p(1:2)=p(1:2)-pf(1:2);
+        set(gcf,'CurrentPoint',p(1:2))
+        p=get(gca,'CurrentPoint');
+        p=sign(p).*min(abs(p),1);  %limit point in rect
+        set(gcbo,'xdata',p(1,1));
+        set(gcbo,'ydata',p(1,2));
+        
+        
+        h=findobj(gca,'color','r');
+        axis([-2 2 -2 2])
+        uistack(h,'top')
+    end
+    set(gcbo,'markerfacecolor','r','markeredgecolor','r')
+    return
+else
+    % starting points:
+    a = 0;
+    b = 0;
+    figure;
+    set(gcf,'userdata',0)
+    set(gcf,'WindowButtonDownFcn','set(gcf,''userdata'',1)')
+    set(gcf,'WindowButtonUpFcn'  ,'set(gcf,''userdata'',0)')
+    hold on
+    for n=length(a):-1:1
+        h(n)=plot(a(n),b(n),'ro','markersize',8,'markerfacecolor','r');
+        set(h(n),'ButtonDownFcn',mfilename);
+    end
+    axis equal
+    plot([-1 1 1 -1 -1],[1 1 -1 -1 1],'k:','color',[.8 .8 .8])%rect
+    axis([-2 2 -2 2])
+    uistack(h,'top')
+    drawnow
+end
+return
+
+

@@ -1,0 +1,1 @@
+y = ((b-a)*x+b+a)/2   dy=(b-a)dx/2  %map int(b,a) to (1,-1) 
