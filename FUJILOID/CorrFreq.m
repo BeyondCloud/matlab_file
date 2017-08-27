@@ -1,8 +1,5 @@
-% u = [1 0 1];
-% v = [2 7];
-% w = conv(u,u);
-% yy = xcorr(y);
 function final_f = CorrFreq(y_in,Fs)
+    %user input checker
     if(size(y_in,2)>size(y_in,1))
         y_in = y_in';
     end
@@ -12,20 +9,22 @@ function final_f = CorrFreq(y_in,Fs)
     
     %ignore freq<low_freq to speed up
     low_freq = 20;
-    len = floor(y_len/low_freq)
-
-    
-%     [out,idx] = sort(yy(1:len),'descend');
-   [out,idx]=max(yy);
-    
+    len = floor(y_len/low_freq);
+    [out,idx] = sort(yy,'descend');
     epslon = 5;
-    i = 1;
-    while idx(i)<epslon
-        i=i+1;
+    
+    % find the first peak near by lag0 corr
+    if idx(1) > epslon
+        i = 1;
+        df = idx(1);
+    else
+        i = 2;
+        while (idx(i)-idx(i-1))<epslon
+            i=i+1;
+        end
+        df = idx(i);
     end
-    %update current max
-    period_cnt =1;
-    df = idx(i)
+    period_cnt = 1;
     next_peak = idx(i)+df;
     
     while next_peak<(y_len-1)
