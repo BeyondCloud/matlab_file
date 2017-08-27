@@ -1,0 +1,9 @@
+% in_str = 'a_ao.wav';
+% [in,Fs] = wavread(in_str);
+Fs = 6000;            % Sampling frequency                    
+T = 1/Fs;             % Sampling period       
+L = 3000;             % Length of signal
+t = (0:L-1)*T;        % Time vector
+X = 0.7*cos(2*pi*200.5*t) ;
+%yy = acf(X',L-1);
+f = CorrFreq(X,Fs);
