@@ -16,13 +16,13 @@ function final_f = CorrFreq(y_in,Fs)
     % find the first peak near by lag0 corr
     if idx(1) > epslon
         i = 1;
-        df = idx(1);
+        df = idx(1)
     else
         i = 2;
         while (idx(i)-idx(i-1))<epslon
             i=i+1;
         end
-        df = idx(i);
+        df = idx(i)
     end
     period_cnt = 1;
     next_peak = idx(i)+df;
@@ -37,7 +37,8 @@ function final_f = CorrFreq(y_in,Fs)
         end
         next_peak = next_peak+df;
     end
-    next_peak = next_peak-df;
+    next_peak = next_peak-df
+    period_cnt
     
     final_f = Fs/(next_peak/period_cnt);
     fprintf('freq=%f\n',final_f);

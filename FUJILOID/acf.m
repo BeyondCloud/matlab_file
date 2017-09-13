@@ -25,7 +25,7 @@ function ta = acf(y,p)
 % --------------------------
 % USER INPUT CHECKS
 % --------------------------
-onPlot = false;
+onPlot = true;
 
 [n1, n2] = size(y) ;
 if n2 ~=1
