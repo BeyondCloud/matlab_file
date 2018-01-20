@@ -1,6 +1,7 @@
-function f0=pit_contour(x,p)
-minf0 = 30;			% Hz - minimum frequency
-maxf0 = [];			% Hz - maximum frequency
+function [f0,t]=yin_f0(x,p)
+% default parameter values ([]: to be determined)
+minf0 = 100;			% Hz - minimum frequency
+maxf0 = 1600;			% Hz - maximum frequency
 wsize = []; 		% s - integration window size
 lpf = [];			% Hz - lowpass prefiltering cutoff
 thresh = 0.1;		% difference function threshold
@@ -12,9 +13,6 @@ sr=[];				% sampling rate
 shift=0;			% flag to control the temporal shift of analysis windows (left/sym/right)
 plotthreshold=0.2;	% aperiodicity above which plot is green or yellow
 
-% if 2~=exist('allread')
-% 	error('sf routines missing: put them in your path & try again');
-% end
 
 
 % handle parameters
@@ -44,6 +42,10 @@ if ~isfield(p, 'plotthreshold'); p.plotthreshold=plotthreshold; end % default
 r=yink(p,fileinfo);
 prd=r.r1; % period in samples
 
+%log2 to make them linear scale
 %f0 = log2(p.sr ./ prd) - log2(440); 	% convert to octaves ref: 440 Hz
 f0 = p.sr ./ prd; %show freq
-fprintf('mean:%2f',mean(f0(~isnan(f0))));
+t = find(~isnan(f0))*hop;
+f0 = f0(~isnan(f0));
+fprintf('mean:%2f\n',mean(f0));
+

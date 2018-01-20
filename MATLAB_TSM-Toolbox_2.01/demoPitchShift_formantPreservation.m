@@ -38,7 +38,7 @@ pathData = 'data/';
 pathOutput = 'output/';
 filename = 'SingingVoice.wav';
 % filename = 'SingingVoice.wav';
-n = 800; % pitch amount in cents
+n = -400; % pitch amount in cents
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 % load the audio signal
