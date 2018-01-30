@@ -7,7 +7,7 @@ lpf = [];			% Hz - lowpass prefiltering cutoff
 thresh = 0.1;		% difference function threshold
 relflag = 1;		% if true threshold is relative to global min of difference function
 bufsize=10000;		% computation buffer size
-hop = 32;			% samples - interval between estimates
+hop = 32;			% samples - interval between estimates,this determine freq density
 range=[];			% range of file samples to process
 sr=[];				% sampling rate
 shift=0;			% flag to control the temporal shift of analysis windows (left/sym/right)
@@ -45,7 +45,7 @@ prd=r.r1; % period in samples
 %log2 to make them linear scale
 %f0 = log2(p.sr ./ prd) - log2(440); 	% convert to octaves ref: 440 Hz
 f0 = p.sr ./ prd; %show freq
-t = find(~isnan(f0))*hop;
-f0 = f0(~isnan(f0));
-fprintf('mean:%2f\n',mean(f0));
+t = find(~isnan(f0))*p.hop;
+% f0 = f0(~isnan(f0));
+fprintf('mean:%2f\n',mean(f0(~isnan(f0))));
 
