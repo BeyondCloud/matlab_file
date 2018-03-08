@@ -1,9 +1,0 @@
-function y = oto_param_preprocess(x,fs)
-    if nargin <= 1 
-        fs = 44100;
-        disp('oto_param_preprocess:Use default fs 44100');
-    end
-    x(:,2) = (x(:,2) + x(:,1));
-    x(:,2) = x(:,2) + x(:,1);
-    
-end
