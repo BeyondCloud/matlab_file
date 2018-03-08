@@ -1,1 +1,1 @@
-[w l p] = load_oto();
+[w l p] = load_oto('mid');

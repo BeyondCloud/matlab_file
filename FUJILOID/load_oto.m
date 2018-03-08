@@ -6,6 +6,9 @@ function [wave,lyric,param] = load_oto(which )
     Xia_path = 'C:\Program Files (x86)\UTAU\App\UTAU\voice\Xia_Voice_Bank_TZH';
     oto_mid = fullfile(Xia_path,which,'oto.ini');
     f = fopen(oto_mid);
+    if f == -1
+        error('Xia path not found,please specify it')
+    end
     C_mid = textscan(f, '%s%f%f%f%f%f', 'delimiter',',');
     ly = C_mid{1};
     for i = 1: length(ly)
