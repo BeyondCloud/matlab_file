@@ -1,0 +1,1 @@
+[w l p] = load_oto();
