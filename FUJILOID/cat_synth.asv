@@ -16,7 +16,7 @@ w_tbl = cell(1,length(note));
 for i = 1: length(note)
 %     index =  find([y{:}] == note(i).y);
     index =  find(strcmp(y,note(i).y));
-    tmp_w= load_Xia_wav(w{index},'mid');
+    tmp_w= load_Xia_wav(w{index},);
     clip_w = partial_stretch(tmp_w,note(i).dur,mparam(index));
     w_tbl{i} =clip_w;
 end

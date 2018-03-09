@@ -1,4 +1,4 @@
-<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+﻿<?xml version="1.0" encoding="UTF-8" standalone="no"?>
 <vsq4 xmlns="http://www.yamaha.co.jp/vocaloid/schema/vsq4/"
       xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
       xsi:schemaLocation="http://www.yamaha.co.jp/vocaloid/schema/vsq4/ vsq4.xsd">
@@ -111,7 +111,7 @@
 				<dur>480</dur>
 				<n>64</n>
 				<v>64</v>
-				<y><![CDATA[一]]></y>
+				<y><![CDATA[ㄧ]]></y>
 				<p><![CDATA[i]]></p>
 				<nStyle>
 					<v id="accent">50</v>

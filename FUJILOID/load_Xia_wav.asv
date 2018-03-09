@@ -1,4 +1,0 @@
-which = 'mid'
-Xia_path = 'C:\Program Files (x86)\UTAU\App\UTAU\voice\Xia_Voice_Bank_TZH';
-wav_path= fullfile(Xia_path,which,'_hao_hao.wav');
-audioreadwav_path

@@ -1,4 +1,0 @@
-addpath('./score_generate');
-note = load_json('data.json');
-disnote(2);
-note(2).y
