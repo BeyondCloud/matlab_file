@@ -8,6 +8,7 @@ oto_param_preprocess(p,44100);
 
 %find corresponded wav segment using oto
 for i = 1: length(note)
-    index =  find([y{:}] == note(i).y);
-    
+%     index =  find([y{:}] == note(i).y);
+    index =  find(strcmp(y,note(i).y))
+
 end

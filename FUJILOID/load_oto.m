@@ -1,9 +1,10 @@
-function [wave,lyric,param] = load_oto(which )
+function [wave,lyric,param] = load_oto(which)
     if nargin == 0 
         which = 'mid';
         disp('load_oto:no argin , use mid as default')
     end
-
+    Xia_path = 'C:\Program Files (x86)\UTAU\App\UTAU\voice\Xia_Voice_Bank_TZH';
+    oto_mid = fullfile(Xia_path,which,'oto.ini');
     f = fopen(oto_mid);
     if f == -1
         error('Xia path not found,please specify it')
