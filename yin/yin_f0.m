@@ -46,6 +46,6 @@ prd=r.r1; % period in samples
 %f0 = log2(p.sr ./ prd) - log2(440); 	% convert to octaves ref: 440 Hz
 f0 = p.sr ./ prd; %show freq
 t = find(~isnan(f0))*p.hop;
-% f0 = f0(~isnan(f0));
+f0 = f0(~isnan(f0));
 fprintf('mean:%2f\n',mean(f0(~isnan(f0))));
 

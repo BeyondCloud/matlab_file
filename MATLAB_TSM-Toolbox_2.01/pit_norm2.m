@@ -1,3 +1,5 @@
+%bad result
+%find pitch mark,didn't interp
 [x Fs] = audioread('my_a2.wav');
 pmarks = find_pmarks(x,Fs);
 pmarks_w = pmarks(2:end)-pmarks(1:end-1);
