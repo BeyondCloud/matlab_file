@@ -1,14 +1,13 @@
 % fast linear interp
-[x Fs] = audioread('my_a2.wav');
-param.sr = Fs;
+% [x Fs] = audioread('my_a2.wav');
+
+param.sr = 44100;
 [f0 t] = yin_f0(x,param);  %get freq_tbl
 %240,1.3915
 %245,1.4190
 %250,1.4012
-
-target_f = 120;
-
-
+f0 = fix_f0(f0);
+target_f = 311.12;
 y = zeros([length(x)*2,1]);  %create an zero array large enough
 ana_pnt  = t(1);
 i=1;

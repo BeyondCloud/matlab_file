@@ -4,9 +4,9 @@ clear; close all; clc;
 %% setup
 
 opt.useFunc = 0; % use matlab spectrogram function or not
-opt.windowType = 'hamming'; % rectwin, hann, or hamming etc.
+opt.windowType = 'hann'; % rectwin, hann, or hamming etc.
 
-window_length = 0.02; % second, i.e.,20ms.
+window_length = 0.2; % second, i.e.,20ms.
 overlap = 0.2; % Ratio of overlap and window length
 
 %% STFT

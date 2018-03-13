@@ -24,4 +24,5 @@ for i = 1: length(score.note)
     clip_w = partial_stretch(tmp_w,score.note(i).dur,mparam(index));
     w_tbl{i} =clip_w;
 end
+
 disp('done');

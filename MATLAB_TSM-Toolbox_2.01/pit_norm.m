@@ -1,12 +1,13 @@
-[x Fs] = audioread('my_a2.wav');
-param.sr = Fs;
+% [x Fs] = audioread('my_a2.wav');
+x = cat_wav;
+param.sr = 44100;
 [f0 t] = yin_f0(x,param);  %get freq_tbl
 t = t + 240;
 %240,1.3915
 %245,1.4190
 %250,1.4012
 
-target_f = 120;
+target_f = 311.12;
 pp_f = spline(t,f0);
 % f0_dense = ppval(pp_f,t(1):t(end));
 % pp_x = spline(t(1):t(end),x(t(1):t(end)));
