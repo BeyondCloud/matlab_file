@@ -23,4 +23,4 @@ clear parameter
 parameter.anaHop = 512;
 parameter.win = win(2048,1); % sin window
 parameter.filterLength = 60;
-final = modifySpectralEnvelope(yy',x,parameter);
+final = modifySpectralEnvelope(yy,x,parameter);
