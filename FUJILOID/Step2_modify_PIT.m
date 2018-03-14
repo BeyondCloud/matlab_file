@@ -17,7 +17,7 @@ while str2double(score.cc(cc_i).t{1}) == 0
 end
 
 for i = 1:length(w_tbl)
-%     x = pit_norm(w_tbl{1},311.2);
+    x = pit_norm(w_tbl{i},311.2);
     
     cur_n =  str2double(score.note(i).n{1});
     note_end = str2double(score.note(i).t{1})+...
@@ -30,6 +30,7 @@ for i = 1:length(w_tbl)
         ini_t = str2double(score.cc(cc_i).t{1});
     end
     while str2double(score.cc(cc_i).t{1})<note_end
+        
         %batch all same time cc         
         while  cc_i<length(score.cc)
             switch(score.cc(cc_i).ID{1})
@@ -54,9 +55,9 @@ for i = 1:length(w_tbl)
         end
 
     end
-    f_tbl =get_frqtbl(length(w_tbl{i}),t_tbl,f_tbl,44100);
+    f_tbl =get_frqtbl(length(x),t_tbl,f_tbl,44100);
     f_tbl = f_tbl/311.2;
-    wav = modify_pit(w_tbl{i},f_tbl,44100);
+    wav = modify_pit(x,f_tbl,44100);
     result = [result;wav];
 %         disp(i);
 %         disp(t_tbl);
