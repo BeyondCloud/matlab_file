@@ -24,11 +24,15 @@ for f = 1:frames
 end
 y = zeros(size(Xia_i));
 phase_shift = 0;
-i_Xn = i_Xn(:,randperm(size(i_Xn, 2)));
+% i_Xn = i_Xn(:,randperm(size(i_Xn, 2)));
 for f = 1:frames-phase_shift
     syn_pnt =(f-1)*Nh+1;
     y(syn_pnt:syn_pnt+N-1) = y(syn_pnt:syn_pnt+N-1)+...
                             ifft(abs(i_Xn(:,f)).*a_pha(:,f+phase_shift));
 end
+a_train = abs(a_Xn(1:512,:));
+i_label = abs(i_Xn(1:512,:));
+save('Xia_A.mat','a_train');
+save('Xia_i.mat','i_label');
 
-sound(y,fs);
+% sound(y,fs);
