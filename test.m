@@ -1,23 +1,21 @@
-t = 0:1/100:10-1/100;                     % Time vector
-x = pi/2+sin(pi*30*t)./(30*t*pi);      % Signal
-x(1) = pi/2+1
-% x = sin(pi*t*30);
+[x fs] = audioread('my_a2.wav');
+x = x(1:fs*4);
 
-y = fft(x);                               % Compute DFT of x
-m = abs(y);                               % Magnitude
-p = unwrap(angle(y));                     % Phase
+N = 1024;
+frames = floor(length(X)/N);
+Xn = zeros(N,frames);
+pha =  zeros(N,frames);
 
-
-f = (0:length(y)-1)*100/length(y);        % Frequency vector
-
-subplot(2,1,1)
-plot(f,m)
-title('Magnitude')
-ax = gca;
-ax.XTick = [15 40 60 85];
-
-subplot(2,1,2)
-plot(f,p*180/pi)
-title('Phase')
-ax = gca;
-ax.XTick = [15 40 60 85];
+for f = 1:frames 
+    Xn(:,f) = fft(x((f-1)*N+1:f*N),N);
+end
+for f = 1:frames 
+    pha(:,f) = Xn(:,f)./abs(Xn(:,f));
+end
+    
+y=Xn;
+for f = 1:frames
+    y(:,f) = ifft(abs(Xn(:,f)).*pha(:,f));
+end
+y = real(reshape(y,1,[]));
+sound(y,fs);

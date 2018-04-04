@@ -1,9 +1,9 @@
 % Assume x's pitch is normalized already
-[x Fs] = audioread('Xia_a_C3.wav');
+[x Fs] = audioread('my_a2.wav');
 
 %define frq_tbl 
 start_f = 1.2;
-end_f = 2;
+end_f = 3;
 del_f =end_f - start_f ;
 x_len = length(x);
 f_tbl = [start_f:del_f/(x_len-2):end_f];
