@@ -18,26 +18,23 @@
 % N: length of the synthesis frame (samples)
 % initState: the initial state matrix
 
-function y = MyAdditivesynth(amps,freqs,R,control)
-[maxPeaks,nFrames] = size(amps);
-R = round(R* control.expandRatio);  % time expansion
+function y = MyAdditivesynth(amps,freqs,hop,control)
+nFrames = size(amps,2);
+hop = round(hop* control.expandRatio);  % time expansion
 freqs = min(pi,freqs*control.fRatio);
-
-y = zeros((nFrames+1)*R,1);
-% state = zeros(maxPeaks,3);  % [ampInitials, freqInitials, phaseInitials] 
-% state(:,2) = freqs(:,1);
-
-w=hann(2*R+1); w=w(1:end-1);
+y = zeros((nFrames+1)*hop,1);
+w=hann(2*hop+1); w=w(1:end-1);
 w=w(:);
-numTracks = maxPeaks;
-nn = 0:length(w)-1;
+n = 0:length(w)-1;
     
 for m=1:nFrames-1
-    tt = (m-1)*R+1: (m+1)*R;  
-    phi = (freqs(:,1)+freqs(:,m))/2*R;
+%     phi = (freqs(:,m)+freqs(:,m+1))/2*R;
+
     mags = 10.^(amps(:,m)/20); 
-    s = mags(:).*cos(freqs(:,m)*nn+phi(:));
+    s = mags(:).*cos(freqs(:,m)*n+rand());
     s = sum(s,1);
     s = s(:).*w;
+    
+    tt = (m-1)*hop+1:(m+1)*hop;  
     y(tt)= y(tt) + s;
 end
