@@ -1,9 +1,11 @@
-function x = fix_f0(x)
-    k_stable =20;
-    thres = 5;
+function x = fix_f0(x,k_stable,thres)
+if nargin<2
+  k_stable=20;
+  thres=5;
+end
     stable_cnt = 0;
     prev_stable_end = 1;
-    i=2
+    i=2;
     while i <=length(x)
         if abs(x(i)-x(i-1))<thres
             stable_cnt=stable_cnt+1;
@@ -16,9 +18,10 @@ function x = fix_f0(x)
             if prev_stable_end == 1
                 x(1) = x(i);
             end
-                edge = [prev_stable_end i];
-                unstable = prev_stable_end+1:i-1;
-                x(unstable)=interp1(edge,x(edge),unstable);
+                next_start = i-k_stable+1;
+                fix_range = [prev_stable_end next_start];
+                unstable = prev_stable_end+1:next_start-1;
+                x(unstable)=interp1(fix_range,x(fix_range),unstable);
             while abs(x(i)-x(i-1))<thres
                 i=i+1;
                 if(i>length(x))
