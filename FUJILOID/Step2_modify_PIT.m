@@ -56,8 +56,8 @@ for i = 1:length(w_tbl)
 
     end
     f_tbl =get_frqtbl(length(x),t_tbl,f_tbl,44100);
-    f_tbl = f_tbl/311.2;
-    wav = modify_pit(x,f_tbl,44100);
+    frq_ratio = f_tbl/311.2;
+    wav = modify_pit(x,frq_ratio,44100);
     result = [result;wav];
 %         disp(i);
 %         disp(t_tbl);
