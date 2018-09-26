@@ -1,8 +1,8 @@
 clear;clc;
-fs = 1000;
+fs = 1200;
 N = 1000;
 t = (1:N);
-f = 16.2324;
+f = 162.324;
 x = cos(2*pi*f*t/fs);
 X = abs(fft(x))';
 X = X(1:N/2+1);
