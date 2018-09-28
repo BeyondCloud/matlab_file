@@ -1,0 +1,13 @@
+xx = 1:4096;
+interp = spline([1;harmonics],[Xdb(1);Xdb(harmonics)]);
+hold on;
+plot(ppval(interp,xx),'-');
+plot(Xdb);
+% xx = 1:4096;
+% plot(ppval(e_interp,xx),'-');
+% hold on;
+% plot(eDB);
+% figure;
+% hold on;
+% plot(ppval(a_interp,xx),'-');
+% plot(aDB);
