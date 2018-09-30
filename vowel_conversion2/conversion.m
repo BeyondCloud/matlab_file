@@ -1,16 +1,17 @@
 clear;clc
-[xa fs] = audioread('./data/a.wav');
+[xa fs] = audioread('./data/a_tar.wav');
 xa = sum(xa, 2) / size(xa, 2);
 xa = xa/max(xa);
-envX = extract_env(xa,fs);
+envX2 = extract_env(xa,fs);
 
-[xe fs] = audioread('./data/e.wav');
+[xe fs] = audioread('./data/e_tar.wav');
 xe = sum(xe, 2) / size(xe, 2);
 xe = xe/max(xe);
-envY = extract_env(xe,fs);
+envY2 = extract_env(xe,fs);
 
-% X2Y = db2mag(envY)./db2mag(envX);
-X2Y = envY./envX;
+%interpolate at log domain to prevent negative interp value
+X2Y = db2mag(envY2)./db2mag(envX2);
+% X2Y = envY2./envX2;
 
 parStft.anaHop = 24;
 parStft.win = win(4096,1);
