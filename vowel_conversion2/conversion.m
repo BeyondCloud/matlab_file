@@ -9,7 +9,8 @@ xe = sum(xe, 2) / size(xe, 2);
 xe = xe/max(xe);
 envY = extract_env(xe,fs);
 
-X2Y = db2mag(envY)./db2mag(envX);
+% X2Y = db2mag(envY)./db2mag(envX);
+X2Y = envY./envX;
 
 parStft.anaHop = 24;
 parStft.win = win(4096,1);
