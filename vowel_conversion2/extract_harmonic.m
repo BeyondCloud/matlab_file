@@ -1,5 +1,5 @@
-clear;clc;
-[x fs] = audioread('./data/a.wav');
+% clear;clc;
+[x fs] = audioread('./data/e_tar.wav');
 x = sum(x, 2) / size(x, 2);
 x = x/max(x);
 N = 4096;
@@ -24,5 +24,5 @@ while cur_h+w<length(Xdb)
 end
 harmonics = harmonics(2:end);
 hold on;
-plot(Xdb);
+% plot(Xdb);
 plot(harmonics,Xdb(harmonics),'o');

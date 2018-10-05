@@ -1,0 +1,12 @@
+[a fs] = audioread('../data/a.wav');
+a = sum(a, 2) / size(a, 2);
+a = a/max(a);
+[e fs] = audioread('../data/e.wav');
+e = sum(e, 2) / size(e, 2);
+e = e/max(e);
+[a_t fs] = audioread('../data/a_tar.wav');
+a_t = sum(a_t, 2) / size(a_t, 2);
+a_t = a_t/max(a_t);
+[e_t fs] = audioread('../data/e_tar.wav');
+e_t = sum(e_t, 2) / size(e_t, 2);
+e_t = e_t/max(e_t);
