@@ -4,7 +4,7 @@ function env = extract_env(x,fs)
     X = X(1:nfft/2);
     
     Xdb = mag2db(X);
-    Xdb = X;
+%     Xdb = X;
    
     w = 3;
     p.sr=fs;
